@@ -4,13 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor // 기본 생성자
+@NoArgsConstructor(access=AccessLevel.PROTECTED) // 기본 생성자
 public class Article {
     @Id // pk, 기본키로 지정
     @GeneratedValue // 기본키 1씩 증가
