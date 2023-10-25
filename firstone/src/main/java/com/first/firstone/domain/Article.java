@@ -3,6 +3,7 @@ package com.first.firstone.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access=AccessLevel.PROTECTED) // 기본 생성자
 public class Article {
     @Id // pk, 기본키로 지정
-    @GeneratedValue // 기본키 1씩 증가
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 1씩 증가 // data sql 문제 원인 
     @Column(name = "id", updatable = false)
     private Long id;
 
@@ -30,17 +31,9 @@ public class Article {
         this.content = content;
     }
 
-    // protected Article() {} // 기본 생성자, 롬복으로 대체
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 
-    // //게터, 롬복으로 대체
-    // public Long getId() {
-    //     return id;
-    // }
-    // public String getTitle() {
-    //     return title;
-    // }
-
-    // public String getContent() {
-    //     return content;
-    // }
 }
